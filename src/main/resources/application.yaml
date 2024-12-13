@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: final-project
+  datasource:
+    url: jdbc:mysql://localhost:3306/final_project_db
+    username: final_project
+    password: final_project
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update # Options: validate | update | create | create-drop
+    show-sql: true # Log SQL queries
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+
+server:
+  port: 8080 # Default server port; change if needed
+
+logging:
+  level:
+    root: INFO
+    finalp.project: DEBUG # Debug logs for your project package
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info # Expose Actuator endpoints
+  endpoint:
+    health:
+      show-details: always
